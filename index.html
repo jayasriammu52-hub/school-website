@@ -620,32 +620,70 @@ Start your child's journey towards a bright future.
 
 <div class="form">
 
-<input type="text" placeholder="Parent Name">
+```html
+<input type="text" id="parentName" placeholder="Parent Name">
 
-<input type="text" placeholder="Student Name">
+<input type="text" id="studentName" placeholder="Student Name">
 
-<select>
-<option>Select Class</option>
-<option>Class 1</option>
-<option>Class 2</option>
-<option>Class 3</option>
-<option>Class 4</option>
-<option>Class 5</option>
-<option>Class 6</option>
-<option>Class 7</option>
-<option>Class 8</option>
-<option>Class 9</option>
-<option>Class 10</option>
+<select id="studentClass">
+    <option value="">Select Class</option>
+    <option>Class 1</option>
+    <option>Class 2</option>
+    <option>Class 3</option>
+    <option>Class 4</option>
+    <option>Class 5</option>
+    <option>Class 6</option>
+    <option>Class 7</option>
+    <option>Class 8</option>
+    <option>Class 9</option>
+    <option>Class 10</option>
 </select>
 
-<input type="tel" placeholder="Phone Number">
+<input type="tel" id="phone" placeholder="Phone Number">
 
-<input type="email" placeholder="Email Address">
+<input type="email" id="email" placeholder="Email Address">
 
-<textarea placeholder="Message / Enquiry"></textarea>
+<textarea id="message" placeholder="Message / Enquiry"></textarea>
 
-<a href="https://wa.me/919999999999" class="btn" target="_blank">
+<button type="button" class="btn" onclick="sendAdmission()">
     Send Admission Enquiry on WhatsApp
+</button>
+
+<script>
+function sendAdmission() {
+
+    let parent = document.getElementById("parentName").value;
+    let student = document.getElementById("studentName").value;
+    let studentClass = document.getElementById("studentClass").value;
+    let phone = document.getElementById("phone").value;
+    let email = document.getElementById("email").value;
+    let message = document.getElementById("message").value;
+
+    if (parent === "" || student === "" || studentClass === "" || phone === "") {
+        alert("Please fill Parent Name, Student Name, Class and Phone Number.");
+        return;
+    }
+
+    let text =
+        "🏫 Admission Enquiry\n\n" +
+        "Parent Name: " + parent + "\n" +
+        "Student Name: " + student + "\n" +
+        "Class: " + studentClass + "\n" +
+        "Phone: " + phone + "\n" +
+        "Email: " + email + "\n" +
+        "Message: " + message;
+
+    let whatsappNumber = "919999999999";
+
+    let url =
+        "https://wa.me/" + whatsappNumber +
+        "?text=" + encodeURIComponent(text);
+
+    window.open(url, "_blank");
+}
+</script>
+```
+
 </a>
 
 </div>
